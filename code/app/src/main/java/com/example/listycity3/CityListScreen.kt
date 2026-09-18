@@ -44,7 +44,7 @@ fun CityListScreen(
     var editProvinceName by remember { mutableStateOf("") }
 
     Column(modifier = modifier.fillMaxSize()) {
-        // ----- FAB row -----
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.End
@@ -57,7 +57,6 @@ fun CityListScreen(
             }
         }
 
-        // ----- Add row (hidden until + is pressed) -----
         if (showAddCityFields) {
             Row(
                 modifier = Modifier
@@ -85,7 +84,6 @@ fun CityListScreen(
                             onAddCity(City(name = newCityName, province = newProvinceName))
                             newCityName = ""
                             newProvinceName = ""
-                            showAddCityFields = false
                         }
                     }
                 ) {
@@ -115,6 +113,7 @@ fun CityListScreen(
                         modifier = Modifier.weight(1f)
                     )
                 }
+
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.End
@@ -140,7 +139,7 @@ fun CityListScreen(
             }
         }
 
-        // ----- List -----
+
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             itemsIndexed(cities) { index, city ->
                 CityRow(
